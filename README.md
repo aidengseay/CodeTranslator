@@ -1,4 +1,4 @@
-# CodeTranslator
+# Code Translator
 Created by Aiden Seay, Winter 2023
 
 ## Overview
