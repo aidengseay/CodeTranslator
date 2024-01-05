@@ -28,7 +28,7 @@ def main():
     print("--------")
     print("Enter the .txt file used for input")
     #inputFile = CodeTranslatorUtilities.getFileName()
-    inputFile = "shortTest.txt" # TEST
+    inputFile = "miniTest.txt" # TEST
     print("\nEnter the .txt file used for output")
     #outputFile = CodeTranslatorUtilities.getFileName()
     outputFile = "out.txt" # TEST
@@ -49,6 +49,8 @@ def main():
     else:
         DecodeUtility.decode(dataInput)
         print(f"\nDecoded results stored in {outputFile}")
+
+    
 
 ################################################################################
 if __name__ == "__main__":

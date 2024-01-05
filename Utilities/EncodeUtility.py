@@ -17,7 +17,7 @@ ASCII = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-',
          '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
          '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
          'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-         'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b','c', 'd', 'e',
+         'X', 'Y', 'Z', '[','\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
          'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
          't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~']
 ASCII_LEN = 95
@@ -40,9 +40,13 @@ def encode(data):
     print(f"shift amount: {amount}")
     print(f"shift frequency: {frequency}")
 
-    encodedData = shiftValues(amount, frequency)
+    encodedData = shiftValues(amount, frequency, encodedData)
+
+    print(F"Message: {encodedData}")
 
     encodedData = insertKey(sizeKey, encodedData)
+
+    return encodedData
 
 ################################################################################
 # SUPPORTING FUNCTIONS
@@ -139,7 +143,7 @@ def initializeDiagonalArray(sideSize):
 
 def insertKey(sizeKey, encodedData):
     ...
-
+    # IT WILL NO LONGER BE A PERFECT SQUARE ONCE YOU ADD THE KEY
 
 
 def readDiagonalArray(array):
@@ -152,8 +156,25 @@ def readDiagonalArray(array):
 
 
 
-def shiftValues(amount, frequency):
-    ...
+def shiftValues(amount, frequency, encodedData):
+
+    counter = 0
+    newEncoded = ""
+    
+    for char in encodedData:
+
+        if(counter % frequency == 0):
+            startLoc = ASCII.index(char)
+            newIndex = (startLoc + amount) % ASCII_LEN
+            newEncoded += ASCII[newIndex]
+
+        else:
+            newEncoded += char
+
+        counter += 1
+
+    return newEncoded
+
 
 
 
